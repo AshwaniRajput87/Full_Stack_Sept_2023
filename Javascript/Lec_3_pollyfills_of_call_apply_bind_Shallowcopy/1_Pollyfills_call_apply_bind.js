@@ -82,7 +82,7 @@ Function.prototype.myApply = function(context, args) { // array of arguments i w
     return result;
 }
 
-//showPersonDetails.myApply(person1, ["Banglore", "India"]);
+//showPersonDetails.myApply(person, ["Banglore", "India"]);
 
 
 Function.prototype.myBind = function(ctx, ...args) {// ctx -> person, args=[]
@@ -102,12 +102,8 @@ function showPersonDetails(city, country, greetMsg) {
     console.log(`${greetMsg}, ${this.firstName} ${this.lastName}, ${city} - ${country}`);
 }
 
-const greetMsg = person.sayHello.myBind(person1, "Delhi1", "India1");
+const greetMsg = person.sayHello.myBind(person1, "Delhi2", "India");
 greetMsg("Delhi", "India");
 
 const showData = showPersonDetails.myBind(person2, "Delhi", "India");
-
 showData('Hi');
-
-
-
