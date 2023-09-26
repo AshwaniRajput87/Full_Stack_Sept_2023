@@ -1,0 +1,17 @@
+function outer() {
+    /**
+     * arrfn has block scope refer to -> functions fn
+     * */
+    let arrFn = [];
+    for (let i = 0; i < 3; i++) {
+        arrFn.push(function fn() {
+            i++;
+            console.log(i); 
+        })
+    }
+    return arrFn;
+}
+let arrFn = outer();
+arrFn[0]();
+arrFn[1]();
+arrFn[2]();
