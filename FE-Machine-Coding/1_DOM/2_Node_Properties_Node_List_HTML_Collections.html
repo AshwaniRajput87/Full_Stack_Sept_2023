@@ -1,0 +1,105 @@
+<!--
+   What is node property in DOM?
+      -> <p id="text"> Hello, Ashwani Rajput </p>
+      -> node properties represent the elements or nodes in the DOM -> known as DOM nodes.
+      -> DOM nodes represent the elements, attributes and text content in HTML.
+
+
+      -> Common node properties:
+           - nodeName: returns the name of node;
+           - nodeType: returns an integer representing the node type.
+           - node Value: gets the value of node.
+      -> Element node properties:
+            Imp point: there is no nodeValue associated, because it is itself a basic/first element.
+
+            -> tagName
+            -> id
+            -> className
+            -> innerHTML
+            -> textContent
+            -> style
+            -> firstChild
+            -> lastChild
+
+       -> Attributes node properties:
+          -> <a href="https://www.google.com"> Click me </a>
+          -> <p class="first-p" id="text"> Hello, Ashwani Rajput </p>
+
+       -> Text node properties:
+
+          -> To deal/tackle the text content of any node or element.
+          -> textContent, innerText, innerHTML;
+
+        -> What is NodeList in DOM?
+           -> A NodeList is an built-in object that represents a collection DOM nodes. typically returned by methods
+              like document.querySelectorAll(tags/multiple tags)
+           -> Nodelist returns an array of elements;
+
+        -> What is HTMLCollection in DOM?
+
+           -> A built-in object represents a group of elements with the same tag name or class name, typically returned by methods
+              like document.getElementsByTagName(tag name) and document.getElementsByClassName(class name)
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node Property, Node List and HTML Collection</title>
+</head>
+<body>
+    <p class="text" id="text"> Hello, <strong>Ashwani Rajput</strong></p>
+    <a href="https://www.google.com"> Click me </a>
+
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <p class="text">Another para</p>
+</body>
+<script>
+    // Element or common node properties 
+    const pElem = document.getElementById('text');
+    console.log(pElem.nodeName);
+    console.log(pElem.nodeType);
+    console.log(pElem.nodeValue);
+
+    // Attribute node properties
+     const linkElem = document.querySelector('a');
+     console.log(linkElem);
+
+     const attrFromLinkelem = linkElem.getAttributeNode('href'); // href = 'hhtps://www.google.com'
+     console.log(attrFromLinkelem);
+
+     console.log(attrFromLinkelem.nodeName);// href
+     console.log(attrFromLinkelem.nodeType);// 2
+     console.log(attrFromLinkelem.nodeValue);// 'https://www.google.com'
+
+     // Text node properties
+
+     const textNode = pElem.firstChild;
+     console.log(textNode);
+
+     console.log(textNode.nodeName);// #text
+     console.log(textNode.nodeType);// 3
+     console.log(textNode.nodeValue);// Hello,
+
+     //Nodelist
+     const listItems = document.querySelectorAll('li, p, a');
+     console.log(listItems);
+     console.log(listItems[2].style.color='red');
+
+     // HTMLCollection
+     //const pTags = document.getElementsByTagName('p');
+     const pTags = document.getElementsByClassName('text');
+     console.log(pTags);
+
+     console.log(pTags[1].textContent);
+     
+
+
+</script>
+</html>

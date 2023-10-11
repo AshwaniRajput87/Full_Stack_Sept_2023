@@ -1,0 +1,135 @@
+<!--
+    What is Browser?
+        -> Software application that allows user to access and display information over internet.
+
+    What is browser environment?
+        -> It's runtime environment provided by browsers to execute the JS code within the web page.
+        -> consists of various components and APIs that allow developers to interact with the user interface, 
+           manipulate the DOM, handles the events and access some browser-specific functionalities.
+        -> Understanding the browser env is very important, for creating dynamic and interactive we applications.
+
+        -> Components: refers to core building blocks of browser environment.
+             * JS Engine, Rendering Engine, DOM, Network Communication, Browser Security , cookies, storage(local storage, session storage).
+
+        -> APIs (Application Programming Interface):
+            * Provided by the browser to allow developers 
+               to interact with and control the browser enviormment programmatically.
+            
+            * includes -> 1.) DOM API
+                          2.) Fetch API
+                          3.) Storage API
+                          4.) Web Workers API
+                          5.) Gelocation API
+
+    
+       -> What is DOM?
+            -> Document            Object                  Model -> represents the tree structure of a web page.
+               (file)
+    (1_BrowserEnv_DOM.html)      (tags/elements)           (structure)
+
+       -> what is DOM API?
+            * An interface b/w JS and HTML/CSS
+            * Enables JS to interact with and modify the content of a web page.
+
+        -> What is document?
+            * it's built-in global object that represents the the HTML document loaded in a web browser.
+        -> What is #document?
+            * #document represents the root node of an HTML document
+
+        Key takeaway:
+           
+          document -> acts as a bridge b/w the HTML and JS which allows the developers to modify the elements 
+                      dynamically and respond to the user interactions.
+
+        -> Perform CURD in DOM
+           C (Create) R(Read) U(Update) D(Delete)
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to DOM</title>
+</head>
+<body>
+
+    <h1 class="first-h1" id="h1"> Hello i am H1 </h1>
+
+    <h1> Hello i am another H1</h1>
+
+    <div>
+        <p>Hi i am para one</p>
+        <p>Hello, i am para two</p>
+    </div>
+
+    <h2>Hello i am H2</h2>
+    
+</body>
+
+<script>
+    /**
+     * // Read
+         ->  document.querySelector(element name/class name);
+         -> document.querySelectorAll(element name)
+         -> document.getElementByClassName(className)
+         -> document.getElementById(name of id)
+     */
+   
+    const h1Element = document.querySelector('h1');
+    console.log(h1Element);
+
+    const allPElements = document.querySelectorAll('p');
+    console.log(allPElements);
+
+    const allH1Elements = document.querySelectorAll('h1');
+    console.log(allH1Elements);
+
+    const h1Elem = document.querySelector('.first-h1');
+    console.log(h1Elem);
+
+    const h1Elem1 = document.querySelector('#h1');
+    console.log(h1Elem1);
+
+    const h1ClassElem = document.getElementsByClassName('first-h1');
+    console.log(h1ClassElem);
+
+    const h1IdElem = document.getElementById('h1');
+    console.log(h1ClassElem);
+
+   /**
+     * // Create
+         ->  document.createElement(name of the element)
+     */
+   
+     const bodyElem = document.querySelector('body');
+     const h3Elem = document.createElement('h3');
+     h3Elem.innerText = 'Hi i am h3';
+     console.log(h3Elem);
+     bodyElem.appendChild(h3Elem);
+
+     /**
+     * // Update
+         ->  elementName.innerHTML = content;
+         ->  elementName.innerText = content;
+     */
+
+     const h2Elem = document.querySelector('h2');
+     console.log(h2Elem);
+     h2Elem.innerHTML = '<i>Hi i am updated h2</i>';
+
+     /**
+     * // Delete
+         ->  elementName.remove();
+     */ 
+
+    //  const h3Elem = document.querySelector('h3');
+     h3Elem.remove();
+
+</script>
+</html>
+
+
+
