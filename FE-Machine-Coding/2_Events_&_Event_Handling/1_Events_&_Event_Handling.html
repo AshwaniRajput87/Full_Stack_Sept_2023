@@ -1,0 +1,93 @@
+<!--
+    What is event in DOM?
+
+       -> An event is just an action takes place in a web page.
+       -> EG: when user interacts with you web page, click on a button via mouse, 
+           typing something in input field via keyboard, refresh a web page, resize the screen etc.
+        
+    What is event handling? How will capture and handle events?
+
+       -> A process of responding to user interaction or system events.
+       -> So, as a developer, you need to handle and capture the events using JS to respond to the end users.
+
+       Mouse event names:
+       1. click
+       2. dbclick
+       3. mouseover
+       4. mouseout
+       5. mouseenter
+       6. mouseleave
+
+       keyboard events: 
+       1. keydown
+       2. keyup
+       3. keypress
+
+       Form events:
+       1. submit
+       2. reset
+       3. change
+       4. input
+       5. focus
+       6. blur
+
+       Window Events:
+       1. resize
+       2. scroll
+
+    How to capture and handle the DOM events?
+      -> You can handle the DOM events in 2 ways:
+        1. Inline event handling:
+            -> you can use 'on' attribute directly in HTML elements to specify the events.
+        2. DOM Event Listeners:
+            -> most recommended and modern approach to add and handle events to elements.
+            -> element.addEventListener(eventname, listerner, options); here options are optinal.
+
+            Problem:
+               How to handle click events once? -> 2 ways to solve this problem
+               1. options = {
+                   once: true
+               }
+               2. removeEventListener('eventname', listener);
+       
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>events and event handling</title>
+</head>
+<body>
+    <button>Click me</button>   
+</body>
+
+<script>
+
+    const btn = document.querySelector('button');
+    console.log(btn);
+
+    const handleClick = () => {
+        const p = document.createElement('p');
+        p.textContent = 'Hello';
+
+        console.log(p);
+
+        let body = document.querySelector('body');
+        body.appendChild(p);
+
+        btn.removeEventListener('click', handleClick);
+    }
+
+    // btn.addEventListener('click', handleClick, {once: true});
+
+    if(btn) {
+        btn.addEventListener('click', handleClick);
+    }
+   
+
+
+</script>
+
+</html>

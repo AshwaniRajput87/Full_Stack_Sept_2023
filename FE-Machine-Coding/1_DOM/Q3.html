@@ -10,6 +10,7 @@
 
 <body>
     <!-- Need to add missed element in list li  -->
+    <!-- We should not edit HTML, add it dynamically via JS -->
     <ul>
         <li>0</li>
         <li>1</li>
@@ -26,6 +27,22 @@
 <script>
    // write your code here
 
+   // select the ul in DOM
+   const ulElem = document.querySelector('ul');
+   console.log(ulElem);
+
+   // all li selected
+   const liElems = document.querySelectorAll('li');
+   console.log(liElems);
+
+   // dynamicall <li>6</li> created
+   const liToAdd = document.createElement('li'); 
+   liToAdd.innerText = '6';
+
+   const liBefore = liElems[6];
+
+   // add to in between the elements, use insertBefore();
+   ulElem.insertBefore(liToAdd, liBefore);
 </script>
 
 </html>
