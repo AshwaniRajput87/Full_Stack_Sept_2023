@@ -1,0 +1,108 @@
+<!--
+   Event Bubbling:
+
+      -> EB is the default behavior in the DOM when an event occurs on a specific element, 
+         then it propagates up through its parent element. (html/document)
+
+      -> it starts from bottom to top -> EB.
+      
+
+
+   Event Capturing:
+
+       -> EC is less commonly used and requires explicit specification (rarely used).
+
+       -> it starts from top to bottom -> EC
+
+    Disadvantages of EB/EC:
+       -> performance impact
+       -> unintended event handling
+       -> Difficulties in event management.
+
+    To solve above problems, you need to stop event propagation.
+
+     event.stopPropagation();
+
+    Event Delegation:
+      -> Instead of attaching event listner to individual elements, you can use event delgation 
+         by attaching a single parent event listener.
+
+     -> This approach of ED, will reduce the number of events attached 
+        and also help to avoid performance issues.
+
+      <ul>
+        <li> Item -1 </li>
+        <li> Item -2 </li>
+        <li> Item -3 </li>
+      </ul> 
+  
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling and Capturing</title>
+</head>
+<body>
+    Click the body element
+        <div id="outer" style="color: green">
+           Outer has been clicked
+             <div id="inner" style="color:red">
+                  inner text has been clicked
+             </div>
+        </div>
+
+        <ul>
+            <li> Item -1 </li>
+            <li> Item -2 </li>
+            <li> Item -3 </li>
+        </ul> 
+
+</body>
+
+<script>
+//    const innerDiv = document.getElementById('inner');
+//    innerDiv.addEventListener('click', (event)=>{
+//       console.log('inner div has been clicked');
+//       event.stopPropagation();
+//    });
+
+//    const outerDiv = document.getElementById('outer');
+//    outerDiv.addEventListener('click', (e)=>{
+//       console.log('outer div has been clicked');
+//       e.stopPropagation();
+//    }, true);
+
+//     const body = document.querySelector('body');
+//     body.addEventListener('click', ()=>{
+//       console.log('body has been clicked');
+//     });
+
+// const innerDiv = document.getElementById('inner');
+//    innerDiv.addEventListener('click', ()=>{
+//       console.log('inner div has been clicked');
+//    }, true);
+
+//    const outerDiv = document.getElementById('outer');
+//    outerDiv.addEventListener('click', ()=>{
+//       console.log('outer div has been clicked');
+//    }, true);
+
+//     const body = document.querySelector('body');
+//     body.addEventListener('click', ()=>{
+//       console.log('body has been clicked');
+//     }, true);
+
+
+    const list = document.querySelector('ul');
+    list.addEventListener('click', (event)=>{
+        console.log(event.target.tagName);
+        if(event.target.tagName === 'LI') {
+            console.log('Clicked on:', event.target.textContent);
+        }
+    });
+
+</script>
+</html>

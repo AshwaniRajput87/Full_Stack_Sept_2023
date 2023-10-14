@@ -1,0 +1,47 @@
+<!--
+    What is DOM Fragments and it's use case?
+      -> A fragment is a lightweight container that can hold multiple DOM nodes.
+      -> It's not the part of main document tree, 
+         that improves the performance when you are manipulating the multiple nodes at once.
+    
+    Benfits:
+        -> DOM fragments boost the web page performance.
+    
+    How to create DOM fragments?
+      -> createDocumentFragment() method
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Fragments</title>
+</head>
+<body>
+    <ul id="myList"></ul>
+</body>
+<script>
+    // Create essence of using Fragments
+    // const ulElem = document.querySelector('#myList');
+    
+    // for(let i = 0; i<1000; i++) {
+    //     const li = document.createElement('li');
+    //     li.textContent = `item-${i + 1}`;
+    //     ulElem.appendChild(li);
+    // }
+
+
+    const fragment = document.createDocumentFragment();
+    const ulElem = document.querySelector('#myList');
+    
+    for(let i = 0; i<1000; i++) {
+        const li = document.createElement('div');
+        li.textContent = `item-${i + 1}`;
+        fragment.appendChild(li);
+    }
+
+    ulElem.appendChild(fragment);
+    
+</script>
+</html>

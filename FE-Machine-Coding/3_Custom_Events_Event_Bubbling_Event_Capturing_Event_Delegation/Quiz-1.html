@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- //Q-1 Display entered text via input field -->
+    <!-- name of event for input field is "input" -->
+    <input type="text" name="text-field" id="my-input">
+    <p id="displayText"></p>
+</body>
+<script>
+    // Write your code here
+
+    const inputElem = document.getElementById('my-input');
+    const displayTxt = document.getElementById('displayText');
+
+    inputElem.addEventListener('input', (event)=> {
+        displayTxt.textContent = event.target.value;
+    });
+
+</script>
+</html>

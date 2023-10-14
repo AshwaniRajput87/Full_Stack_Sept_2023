@@ -1,0 +1,80 @@
+<!--
+   What is custom event?
+
+      -> User-defined event that developers create to handle some specific situations.
+      -> provide you the more flexibility that allows developers to define their own event names.
+
+    How to create custom events?
+
+      1. create the custom event:
+           new CustomEvent(a string, optional object with additional details)
+      2. Dispatch the custom event
+           dispatchEvent()
+           -> This will notify any event listeners that are listening to this custom event.
+      3. Add Event Listeners
+          addEventListener()
+
+    Scenarios:
+       -> parent-child communication.
+       -> third-party lib integration.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom events</title>
+</head>
+<body>
+     
+    <div id="parent"></div>
+    <button id="btn">click me</button>
+    
+</body>
+<script>
+
+   /***
+    * 1. get the btn element
+    * 2. attach an event to btn element, create a custom event with some data that
+    *    you wnat to provide to the parent.
+    * 3. some object filled in template and render in a parent div
+    */
+
+    // Child Component/ Element
+    const btn = document.getElementById('btn');
+
+    btn.addEventListener('click', () => {
+        const customEvent = new CustomEvent('post', {
+            detail: {
+                message: 'A child button has been clicked!',
+                vaule: true,
+                userDetail: {
+                    name: 'Ashwani Rajput',
+                    designation: 'EM'
+                }
+            }
+        });
+        document.dispatchEvent(customEvent);
+    });
+
+    // Parent Component
+     const parentElem = document.getElementById('parent');
+    //  const p = document.createElement('p');
+    //  parentElem.appendChild(p);
+
+     document.addEventListener('post', (event)=>{
+       const eventData = event.detail;
+       console.log(eventData);
+
+       const template = `
+        <p> Mesaage: ${eventData.message} </p>
+        <p> Value: ${eventData.value} </p>
+        <p> Name: ${eventData.userDetail.name} </p>
+        <p> Designation: ${eventData.userDetail.designation} </p>
+       `;
+
+        parentElem.innerHTML = template;
+     });
+</script>
+</html>
