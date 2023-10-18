@@ -15,7 +15,7 @@
  *     3 - Buttons
  *        - start - to start the timer
  *        - stop - to stop the timer 
- *        - reset - to reset the input values
+ *        - reset - to reset the input values as 0
  */
 
 class Timer {
@@ -35,18 +35,30 @@ class Timer {
         this.seconds = 0;
         this.intervalId = null;
 
-        this.onStart = this.onStart.bind(this);
+        // this.onStart = this.onStart.bind(this);
+        // this.start.addEventListener('click', this.onStart);
+        // this.onStop = this.onStop.bind(this);
+        // this.stop.addEventListener('click', this.onStop);
+        // this.onReset = this.onReset.bind(this);
+        // this.reset.addEventListener('click', this.onReset);
 
-        this.start.addEventListener('click', this.onStart);
-        this.stop.addEventListener('click', this.onStop);
-        this.reset.addEventListener('click', this.onReset);
-
+        this.bindEvents();
     }
 
-    onStart(event) {
-        event.stopPropagation();
+    bindEvents() {
+        this.start.addEventListener('click', () => {this.onStart()});
+        this.stop.addEventListener('click', () => {this.onStop()});
+        this.reset.addEventListener('click', () => {this.onReset()});
+        this.display.addEventListener('input', (event) => {this.onInput(event)});
+    }
+
+    onStart() {
+        console.log('Start Timer');
         this.setTime();
         this.startTimer();
+        this.setControls(true, false); 
+        this.display.classList.add('progress');
+        this.setAllInputsDisabled(true);
     }
 
     setTime() {
@@ -68,6 +80,10 @@ class Timer {
                 this.minutes-=1;
             }
 
+            if(this.minutes === 0 && this.seconds === 0) {
+                this.onReset();
+            }
+
             this.setDisplay(this.minutes, this.seconds);
         }, 1000);
     }
@@ -79,17 +95,54 @@ class Timer {
         this.secLSB.value = String(secs%10);
     }
 
-    onStop(event) {
-      
+    onStop() {
+        clearInterval(this.intervalId);
+        this.setControls(false, true); 
+        this.display.classList.remove('progress'); 
+        this.setAllInputsDisabled(false);
     }
 
-    onReset(event) {
-
+    setControls(startStatus=false, stopStatus=false) {
+        this.start.disabled = startStatus;
+        this.stop.disabled = stopStatus;
     }
 
+    setAllInputsDisabled(isDisabled=false) {
+        this.minMSB.disabled = isDisabled;
+        this.minLSB.disabled = isDisabled;
+
+        this.secMSB.disabled = isDisabled;
+        this.secLSB.disabled = isDisabled;
+    }
+   
+    onReset() {
+       console.log('Reset button');
+       // resetting mt timer as 00:00
+       this.resetTimerValues();
+       this.resetControls();
+    }
+
+    resetControls() {
+        clearInterval(this.intervalId);
+        this.setAllInputsDisabled(false);
+        this.display.classList.remove('progress');
+    }
+
+    resetTimerValues() {
+        this.minMSB.value = 0;
+        this.minLSB.value = 0;
+        this.secMSB.value = 0;
+        this.secLSB.value = 0;
+    }
+
+    onInput(event) {
+        console.log(event.target);
+        //minMSB & secMSB -> 0 - 5
+        // minLSB & secLSB -> 0 - 9
+    }
 
 }
 
-new Timer('minMSB', 'minLSB', 'secMSB', 'secLSB', 'start', 'stop', 'reset', 'dispaly');
+new Timer('minMSB', 'minLSB', 'secMSB', 'secLSB', 'start', 'stop', 'reset', 'display');
 
 
