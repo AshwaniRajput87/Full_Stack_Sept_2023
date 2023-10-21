@@ -13,7 +13,7 @@
  *      
  *        -> use proper scope and closures data clean up part
  * 
- *     3. Large objects: array 1000 data at a time you fetching
+ *     3. Large objects: array of 1000 data at a time you are fetching
  * 
  *        -> Derefernce the large objects;
  *           const data = [

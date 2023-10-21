@@ -149,42 +149,36 @@ class Timer {
         //minMSB & secMSB -> 0 - 5
         // minLSB & secLSB -> 0 - 9
 
-        // const value = Number(event.target.value);
         const value = Number(event.data);
-        if(Number.isInteger(value)) {
-            console.log(document.activeElement);
-            console.log(value);
-            if (this.minMSB === document.activeElement){
+
+        if(!isNaN(value)) {
+            const activeElement  = document.activeElement
+            if (activeElement === this.minMSB){
                 this.onValue(this.minMSB, this.minLSB, value, 0, 5);
-            } else if (this.minLSB === document.activeElement) {
+            } else if (activeElement === this.minLSB) {
                 this.onValue(this.minLSB, this.secMSB, value, 0, 9);
-            } else if(this.secMSB === document.activeElement){
+            } else if(activeElement === this.secMSB){
                 this.onValue(this.secMSB, this.secLSB, value, 0, 5);
-            } else if(this.secLSB === document.activeElement){
-                this.onValue(this.secLSB, null, 0, 9);
+            } else if(activeElement === this.secLSB){
+                this.onValue(this.secLSB, null, value, 0, 9);
             }
         }
 
     }
 
     onValue(target, nextTarget, value, minAllowed, maxAllowed) {
-        if(value >= minAllowed && value <= maxAllowed) {
+
+        if (value >= minAllowed && value <= maxAllowed) {
             target.value = value;
-            if(nextTarget) {
+            if (nextTarget) {
                 nextTarget.focus();
                 nextTarget.select();
-            } else {
-                target.value = 0;
-                target.select();
             }
         } else {
             target.value = 0;
+            target.select();
         }
     }
-
-    // errorMsg() {
-
-    // }
 
 }
 
