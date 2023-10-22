@@ -1,0 +1,52 @@
+<!--
+    Web Performance Optimization:
+       -> Rendering optimization techniques: (HTML and CSS)
+       -----------------------------------------
+
+        1. While writing your HTML code:
+            1.1. Avoid unecessary elements/tags
+            1.2. Try to reduce the DOM Size.
+            1.3. validate HTML page. (https://validator.schema.org/)
+
+        2. Image optimization:
+            2.1. compress or optimise the images (either as your Design team or https://tinyjpg.com/)
+            2.2. use responsive design to download the resources from the server based on devices are being used via end user.
+            2.3. modern format of images webP or PNG.
+
+        3. CSS and layout:
+          3.1. use flexbox or grid layout.
+          3.2. segregate the critical rendering CSS and put in a separate file or use in internal way of wrting the styles
+          3.3. Minified your CSS file.
+          3.4. Minified the HTML
+          3.5. build RWD and use %, or em or rem units in CSS
+
+        4. defer you non-critical CSS.
+           - put at the end of your web page closed </body> tag
+
+        5. Minimize the reflows and repaints:
+           - use transform properties for the animations ot transitions
+
+        JS optimisation Techniques:
+        -----------------------------
+          1. use defer or async attributes in script tags for JS files.
+          2. minify the JS files.
+          3. Intersection observer -> lazy loading of your images -> (Will the practical for FSP)
+          4. use fragments 
+          5. code clean -> How to avoid memory leakage problems.
+          6. Use CDN -> for accessing the heavy assests -> images/SVG/GIF/videos/font families/ icons -> use AWS cloud front 
+          7. use memoization 
+          
+        Network Optimisation techniques:
+        ------------------------------ 
+        1. minification (HTML, CSS, JS)
+        2. code Splitting (HTML, CSS and JS)
+        3. Compression: 
+               -> reduces the size of data before transmission, saves the bandwidth of the netwrod and improves the speed.
+               -> gzip must be enabled at infra level and at BE (devops team)
+        4. caching: 
+               -> caching stores copies of data or resources temporarily to speed up access and reduce the load on the servers.
+        5. CDN: 
+             -> Content Delivery Network: a distributed netword to store the copies of the web content.
+             -> for accessing the heavy assests -> AWS cloud front(AWS CDN)
+   
+-->

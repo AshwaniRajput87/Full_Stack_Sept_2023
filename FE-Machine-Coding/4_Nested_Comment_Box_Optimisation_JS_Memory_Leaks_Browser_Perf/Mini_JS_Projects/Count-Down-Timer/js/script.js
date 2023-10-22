@@ -148,7 +148,6 @@ class Timer {
     onInput(event) {
         //minMSB & secMSB -> 0 - 5
         // minLSB & secLSB -> 0 - 9
-
         const value = Number(event.data);
 
         if(!isNaN(value)) {
@@ -163,7 +162,6 @@ class Timer {
                 this.onValue(this.secLSB, null, value, 0, 9);
             }
         }
-
     }
 
     onValue(target, nextTarget, value, minAllowed, maxAllowed) {
@@ -179,7 +177,6 @@ class Timer {
             target.select();
         }
     }
-
 }
 
 new Timer('minMSB', 'minLSB', 'secMSB', 'secLSB', 'start', 'stop', 'reset', 'display');

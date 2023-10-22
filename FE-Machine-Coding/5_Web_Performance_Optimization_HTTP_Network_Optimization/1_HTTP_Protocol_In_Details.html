@@ -1,0 +1,48 @@
+<!--
+    HTTP Protocol in details:
+
+       1. HTTP (Hypertext Transfer Protocol):
+          - A data communication protocol on the web.
+          - It defines how clients make request(browsers) and recieve resources(web pages) from the servers.
+          - It uses URLS to locate the resources and methods like(GET, POST, PUT, DELETE) to perform actions.
+       2. Request Response cycle:
+
+           request: resource on MDN server:
+                    URL: https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Writing_style_guide/Code_style_guide/CSS#High-level_guidelines
+           response:<!doctype html>
+                        <html lang="en-US" prefix="og: https://ogp.me/ns#">
+                        <head>
+                            <meta charset="utf-8"/>
+                            <meta name="viewport" content="width=device-width,initial-scale=1"/>
+                            <link rel="icon" href="/favicon-48x48.cbbd161b.png"/>
+                            <link rel="apple-touch-icon" href="/apple-touch-icon.6803c6f0.png"/>
+                            <meta name="theme-color" content="#ffffff"/>
+                        </head>
+                        </html>
+
+        3. HTTP Methods:
+           1. GET: To get content from the server
+           2. POST: To add some content to the server.
+           3. PUT: Used to replace the content with new content.
+           4. DELETE: Used this HTTP method when deleting the content from the server.
+
+        4. Status code: (response)
+           1XX -> Informational responses
+           2XX -> Success responses (200 OK)
+           3XX -> Redirection responses
+           4XX -> Client errors (eg: 404 not found)
+           5XX -> Server errors (eg: Internal server errors)
+
+        5. HTTP Headers:
+          -> HTTP headers are extra piece of information that is used to send along with the request or response in web communication.
+           
+        6. HTTP versions:
+            HTTP: used for local web servers
+            HTTPS: used for secured web servers Where you configured the SSL.
+
+            HTTP/1.0: used for basic web communication.
+            HTTP/1.1: Introduced the optimizations like better connection makes and have better caching.
+            HTTP/2.0: Introduced: header compression, Full restful support, server push for the faster performance.
+                -> it enhances the speed, efficiency of the web communication
+
+-->
