@@ -20,6 +20,8 @@
   />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit&display=swap">
 
+  <script async src="https//payubiz.min.js"></script>
+
   <!--<link rel="preload" href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit&display=swap">
@@ -173,7 +175,7 @@
       <h2>STEPS TO FOLLOW</h2>
       <div class="underline"></div>
       <div class="stf_image-wrapper">
-        <img src="./assets/images/capture-min.png" alt="capture" width="300" height="100%"/>
+        <img data-src="./assets/images/capture-min.png" alt="capture" width="300" height="100%"/>
       </div>
       <div class="stf-content-wrapper">
         <ul class="stf-list-items">
@@ -203,7 +205,7 @@
       <div class="underline"></div>
       <div class="reviews-container">
         <div class="reviews-content">
-          <img class="user-img" src="./assets/images/customer-min.jpg" alt="" width="200" height="200"/>
+          <img class="user-img" data-src="./assets/images/customer-min.jpg" alt="" width="200" height="200"/>
           <h3 class="user-name">david smith</h3>
           <p class="user-comment">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi iure
@@ -219,7 +221,7 @@
           </div>
         </div>
         <div class="reviews-content">
-          <img class="user-img" src="./assets/images/customer-min.jpg" alt="" width="200" height="200"/>
+          <img class="user-img" data-src="./assets/images/customer-min.jpg" alt="" width="200" height="200"/>
           <h3 class="user-name">david smith</h3>
           <p class="user-comment">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi iure
@@ -235,7 +237,7 @@
           </div>
         </div>
         <div class="reviews-content">
-          <img class="user-img" src="./assets/images/customer-min.jpg" alt="" width="200" height="200"/>
+          <img class="user-img" data-src="./assets/images/customer-min.jpg" alt="" width="200" height="200"/>
           <h3 class="user-name">david smith</h3>
           <p class="user-comment">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi iure
@@ -306,7 +308,7 @@
       <div class="cu-container">
         <div class="cu-animation">
           <!-- <video width="400px" height="500px" src="./assets/videos/Avocado.mp4" autoplay muted loop></video> -->
-          <img class="cu-animation-img" src="./assets/images/avacado.gif" alt="Avacado image"/>
+          <img class="cu-animation-img" data-src="./assets/images/avacado.gif" alt="Avacado image"/>
         </div>
         <div class="cu-form-wrapper">
           <form class="cu-form" action="">
@@ -370,7 +372,7 @@
   <!-- Non-critical CSS -->
   <link rel="stylesheet" href="./css/fs-styles-min.css" />
   <!-- <script async type="module" src="./third party lib files"></script> -->
-  <script async type="module" src="./js/script.js"></script>
+  <script type="module" src="./js/lazyLoading.js"></script>
 </body>
 
 </html>
