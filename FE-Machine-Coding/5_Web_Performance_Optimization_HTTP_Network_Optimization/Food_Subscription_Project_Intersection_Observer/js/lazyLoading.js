@@ -6,8 +6,10 @@ const handleImgIntersection = (img) => {
     img.src = img.dataset.src; // img.dataset -> src
 
     img.onload = ()=> {
-        img.removeAttributes('data-src');
+        img.removeAttribute('data-src');
     }
+
+    
 }
 
 const lazyLoading = () => {
