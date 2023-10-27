@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typeahead system implementation</title>
+    <link rel="stylesheet" href="./typeahead-system/css/typeaheadSystem.css"/>
 </head>
 <body>
     <input id="searchInput" type="text" placeholder="Search for users" />
     <div id="results"></div>
-    <script src="./typeahead-system/js/typeaheadSystem.js"></script>
+
+    <!-- <script src="./typeahead-system/js/typeaheadSystem.js"></script> -->
+    <script type="module" src="./typeahead-system/utils/debouncing.js"></script>
+    <script type="module" src="./typeahead-system/js/debouncedTypeaheadSystem.js"></script>
 </body>
 </html>
