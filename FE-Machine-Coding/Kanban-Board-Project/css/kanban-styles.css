@@ -81,9 +81,31 @@
 .main-cont {
     padding:  2rem;
     display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 2rem;
+    justify-content: space-between;
+    /* flex-wrap: wrap;
+    gap: 2rem; */
+}
+
+.ticket-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-wrapper span {
+    min-width: 270px;
+    padding: 2rem;
+    margin:  1rem 0;
+    font-size: 1.75rem;
+    background-color: #7c7c7c;
+    text-align: center;
+}
+
+.ticket-container {
+    flex: 1;
+    padding: 1rem;
+    min-width: 270px;
+    background-color: #7c7c7c;
+    min-height: 200px;;
 }
 
 .ticket-cont {
@@ -91,6 +113,13 @@
     width: 25rem;
     background-color: aliceblue;
     position: relative;
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.dragging {
+    opacity: 0.5;
 }
 
 .ticket-color {
@@ -115,6 +144,7 @@
     position: absolute;
     bottom: 1rem;
     right: 2rem;
+    cursor: pointer;
 }
 
 .fa-lock,
