@@ -1,0 +1,60 @@
+<!--
+    What is rendering List in React?
+        -> A list of data to be displayed in an ordered format and mainly 
+          used for the menus or the list of ites over the web apps.
+        -> we use map() -> JS HOF
+
+    What is "key" prop
+        -> it's a special attibute use to identify the unique list of items.
+
+    Uni directional flow of data menase data is passing from parent to child via props.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First react app</title>
+    <!-- React is used for UI manipulation -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+
+    <!-- react dom -> To get the actual changes in the DOM with the help of react DOM library  -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- to convert jsx to js  -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link rel="stylesheet" href="./css/styles.css"/> 
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const cricketers = ['Sachin', 'Dhoni', 'Virat', 'R. Ashwin', 'Hardik Pandya', 'Rohit'];
+
+        const Main = ({ cricketers }) => {
+
+            const listItems = cricketers.map((item, idx)=>{
+                return <li className="list-item" id={`item-${idx+1}`} key={idx + 1}>{item}</li>;
+            });
+
+            /***
+             *  <li>Sachin</li>
+             *  <li>Dhoni</li>
+             *  <li>Virat</li>
+             *  <li>R. Ashwin</li>
+             *  <li>Hardik Pandya</li>
+             *  <li>Rohit</li>
+             **/
+            
+            return <ul className="list-items">
+                    { listItems }
+                </ul>;
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Main cricketers = {cricketers}/>);
+    </script>   
+</body>
+</html>
