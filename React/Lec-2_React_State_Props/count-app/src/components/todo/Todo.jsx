@@ -1,0 +1,30 @@
+import { useState } from "react";
+import CreateTask from "../createTask";
+import ListItems from "../listItems";
+
+const Todo = () => {
+
+    const [tasks, setTasks] = useState([]);
+
+    const getTask = (currentTask) => {
+       
+        const newTasks = [...tasks];
+
+        newTasks.push({
+            id: Date.now(),
+            task: currentTask
+        });
+
+        setTasks(newTasks);
+    }
+
+  return (
+    <>
+      <h1> Todo App</h1>
+      <CreateTask  getTask = {getTask}/>
+      <ListItems taskList = {tasks}/>
+    </>
+  )
+}
+
+export default Todo;
