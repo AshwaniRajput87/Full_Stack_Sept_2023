@@ -1,14 +1,14 @@
-const ListItems = ({ taskList }) => {
-    console.log(taskList);
+const ListItems = ({ taskList, removeTask }) => {
     return(
         <>
           {
             taskList.map((item)=> {
                 return (
                     <>
-                    <li key={item.id} id={item.id}>{item.task}</li>
-                    <button>Delete</button>
-                    <button>Edit</button>
+                    <li key={item.id} id={item.id}>{item.task}
+                      <button id={item.id} onClick={removeTask}>Delete</button>
+                      <button id={item.id}>Edit</button>
+                    </li>
                   </>
                 )
             })

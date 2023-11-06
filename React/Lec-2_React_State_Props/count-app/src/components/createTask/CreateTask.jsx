@@ -5,14 +5,12 @@ const CreateTask = ({ getTask }) => {
 
 
     const setInputData = (event) => {
-        setInputText(event.target.value);
-        console.log(event.target.value);
+      setInputText(event.target.value);
     } 
 
     const addTask = () => {
-        console.log(inputText);
-        getTask(inputText);
-        setInputText('');  // inputText = ''
+      getTask(inputText);
+      setInputText('');  // inputText = ''
     }
 
     return (

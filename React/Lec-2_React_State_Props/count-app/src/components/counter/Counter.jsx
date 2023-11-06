@@ -8,25 +8,39 @@
  *        - What is an event? -> Remember in DOM API-> just an action like clicking the button, enter the value in input field.
 
  *     -> What is hook in react?
-          - a hook is function that allows you to use the state in a functional component.
-          - useState() -> is a built-in hook that manages the state of a functional component.
-                       -> useState doesn’t return just a variable, t returns an array, where the first element is the state variable 
-                          and the second element is a function to update the value of the variable.
-          - There are 2 kinds of hooks available in React:
-            1. built-in hooks: useState(), useEffect(), useMemo(), useCallack() etc
-            2. custom hooks -> useFetch() - user defined hooks can also be created via prefix "use"
- * 
- * 
+            - a hook is function that allows you to use the state in a functional component.
+            - There are 2 kinds of hooks available in React:
+                1. built-in hooks: useState(), useEffect(), useMemo(), useCallack() etc
+                2. custom hooks -> useFetch() - user defined hooks can also be created via prefix "use"
+
+            - useState():
+                -> is a built-in hook that manages the state of a functional component.
+                -> useState doesn’t return just a variable, t returns an array, where the first element is the state variable 
+                   and the second element is a function to update the value of the variable.
  */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './counter.css';
 
 const Counter = ({ counter }) => {
-
-
-
     const [count, setCount] = useState(counter); // const count = 0;
+
+    // Mounting phase: useEffect with an empty dependency array
+    useEffect(() => {
+        console.log("Component mounted");
+
+        // Cleanup function (unmounting phase)
+        return () => {
+            console.log("Component will unmount");
+        };
+    }, []);
+
+    // Updating phase: useEffect with a dependency on 'count'
+    useEffect(() => {
+        console.log("Component updated");
+
+        // This effect runs after every render because it depends on 'count'
+    }, [count]);
 
     const handleIncrement = () =>{
         // setCount(count + 1);
