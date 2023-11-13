@@ -6,7 +6,7 @@ const useFetch = (url, intitialData) => {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(async() => {
+    const fetchData = async() => {
         setIsLoading(true);
         try {
             const response = await Axios.get(url);   //fetch('url').then().catch(); // aysnc and await
@@ -18,6 +18,10 @@ const useFetch = (url, intitialData) => {
         } finally {
             setIsLoading(false);
         }
+    }
+
+    useEffect(() => {
+        fetchData();
     }, [url]);
 
     return {

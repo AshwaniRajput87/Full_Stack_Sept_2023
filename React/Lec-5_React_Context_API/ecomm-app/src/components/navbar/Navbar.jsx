@@ -1,8 +1,11 @@
 import { Link, NavLink }  from 'react-router-dom';
 import { FaOpencart } from "react-icons/fa";
 import './navbar.css';
+import useFetch from '../../hooks/useFetch';
 
 const Navbar = () => {
+    const {data, error} = useFetch('https://fakestoreapi.com/products/categories', []);
+    console.log(data);
     return (
         <>
             <nav className='nav'>
