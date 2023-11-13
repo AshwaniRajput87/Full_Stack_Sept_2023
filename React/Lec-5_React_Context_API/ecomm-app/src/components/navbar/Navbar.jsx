@@ -4,8 +4,6 @@ import './navbar.css';
 import useFetch from '../../hooks/useFetch';
 
 const Navbar = () => {
-    const {data, error} = useFetch('https://fakestoreapi.com/products/categories', []);
-    console.log(data);
     return (
         <>
             <nav className='nav'>
