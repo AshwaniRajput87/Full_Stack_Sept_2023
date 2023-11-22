@@ -47,3 +47,6 @@
     6. Navigate: For redirection on any component directly, so can use NAvigate component.
     7. Outlet: used for nesting of the routes
     
+# API docs:
+   https://fakestoreapi.com/docs
+1. https://fakestoreapi.com/products/categories
