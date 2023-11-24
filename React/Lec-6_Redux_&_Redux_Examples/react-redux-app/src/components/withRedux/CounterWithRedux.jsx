@@ -17,7 +17,7 @@ const CounterWithRedux = () => {
     
     return (
         <>
-            <h2>Counter without redux</h2>
+            <h2>Counter with redux</h2>
             <button onClick={handleIncrement}>+</button>
             <p>count: {count}</p>
             <button onClick={handleDecrement}>-</button>
