@@ -1,0 +1,13 @@
+@import url("../../index.css");
+
+.counter-wrapper {
+  background-color: lightblue;
+}
+
+.btn {
+    width: 30px;
+}
+
+p{
+    padding: 20px 0;
+}
