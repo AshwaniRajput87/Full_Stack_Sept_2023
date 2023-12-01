@@ -1,46 +1,49 @@
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Link,
-    NavLink,
-    Navigate
-} from 'react-router-dom';
+import { memo } from 'react';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import NotFound from '../pages/notFound';
-import Header from '../components/header/Header';
-import Loader from '../components/loader';
-import useFetch from '../hooks/useFetch';
-import ProductList from '../pages/productList';
+import useFetchData from '../hooks/useFetchData';
+
+const Header = lazy(()=> import('../components/header/Header'));
+const NotFound = lazy(()=> import('../pages/notFound/NotFound'));
+const Loader = lazy(()=> import('../components/loader/Loader'));
+const ProductList = lazy(()=> import('../pages/productList/ProductList'));
+const CartItems = lazy(()=> import('../pages/cartItems'));
+
 
 const AppRoutes = () => {
 
-    const {data: categories, isLoading} = useFetch('https://fakestoreapi.com/products/categories', []);
-
+  const { 
+    isLoading, 
+    error, 
+    data: categories 
+  } = useFetchData("https://fakestoreapi.com/products/categories", []);
+     
     return (
-        <> 
+        <>
           <Router>
-             {/* <Loader /> */}
-             <Header categories={categories}/>
-                {
-                    isLoading ? (
-                        <Loader />
-                    ): (
-                        <Routes>
-                            {/* <Route path='/' element={<Home />} />
-                            <Route path='/login' element={<Login />} /> */}
-
-                            <Route path='/products/:categoryName'  element={<ProductList />}/>
-
-                            {/** If the routes doesn't match or exist then 404 page not found component has to render*/}
-                            <Route path='*' element={<NotFound />} />
-                        </Routes>
-                    )
-                }
-             {/* <Footer /> */}
-          </Router>  
+          <Suspense fallback={<Loader />}>
+            <Header categories={categories} isLoading={isLoading}/> 
+            {
+              isLoading ? (
+                <Loader />
+              ): (
+                <Routes>
+                  {/* <Route path="/products/" element={<Home />}></Route>
+                  <Route path="/about" element={<About />}></Route>
+                  <Route path="/contact" element={<Contact />}></Route> */}
+                  <Route path='products/:categoryName' element={<ProductList />} />
+                  <Route path='/cart' element={<CartItems />} />
+                  <Route path='*' element={<NotFound />} />
+                </Routes>
+              )
+            }
+            {/* <Footer /> */}
+            </Suspense>
+          </Router>
         </>
     )
+
 }
 
-export default AppRoutes;
+export default memo(AppRoutes);
