@@ -76,3 +76,20 @@
  *       - usage - refer the code of UsageOfUseMemo component
  *    
  */
+
+
+/****
+ *   What is class based component and what are the life cycle methods of Class based components?
+ * 
+ *        In react basically we have 2 kinds of comps:
+ *         1. functional comp: that follows the arrow function syntax to create any comp.
+ *         2. class comp: that the ES6 based class syntax
+ *                        - If we are using class based comp, 
+ *                          it is having their lifecyle methods 
+ *                          that needs to follow for writing any such components.
+ *        
+ * 
+ * 
+ * 
+ * 
+ */

@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import './counter.css'
+import React, { useState } from 'react';
+import './counter.css';
+
 const Counter = () => {
     const [count, setCount] = useState(0);
 
@@ -12,14 +13,17 @@ const Counter = () => {
     }
 
     return (
-        <div className='container counter-wrapper'>
+        <div className="container counter-wrapper">
+
+            <h1 className='fancy-text'>Counter example</h1>
+
             <h2>Counter Example with functional Component</h2>
             <button className="btn" onClick={handleIncrement}>+</button>
-            <p>count: {count}</p>
+            <p>Count: {count}</p>
             <button className="btn" onClick={handleDecrement}>-</button>
         </div>
     )
 }
 
 
-export default Counter;
+export default React.memo(Counter);

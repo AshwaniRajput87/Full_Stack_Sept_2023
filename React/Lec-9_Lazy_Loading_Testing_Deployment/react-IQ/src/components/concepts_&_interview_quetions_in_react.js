@@ -33,15 +33,39 @@
  *     -> What do use to write the unit test cases in react?
  *         1. RTL(React Testing Library): Documentation link: https://testing-library.com/
  *         2. JEST: https://jestjs.io/docs/getting-started
+ *                  https://jestjs.io/docs/configuration
  * 
  *         RTL: RTL builds on the top DOM testing library by adding API for working upon the react component. (For snapshot testing, you RTL).
  *         JEST: For component functionality, you use jest along with RTL.
  * 
  *         How to setup the jest and RTL in react projects?
- *         1. npm i -D jest jest-dom @testing-library/react
+ *         1. npm i -D/--dev jest jest-dom @testing-library/react @testing-library/jest-dom
  *         2. add this test script in package.json
- *            "test": "jest src"
- *         3. You will get error by jest test runner tool to not compiled into the JS object so for that we need to set babel
- *            yarn add --dev babel-jest @babel/core @babel/preset-env @babel/preset-react
- *         4. create .babelrc file and metion configuration for preset-react, preset-env
+ *            "test": "jest src --watch"
+ *         3. You will get error by jest test runner tool to compiled the JSX into the JS object so for that we need to set babel
+ *            yarn add --dev babel-jest @babel/core @babel/preset-env @babel/preset-react jest-environment-jsdom
+ *         4. create .babelrc file and mention configuration for preset-react, preset-env
+ *              {
+                    "presets": ["@babel/preset-env", "@babel/preset-react"]
+                }
+                
+ *          5. create jest.config.js ->  https://jestjs.io/docs/code-transformation
+ *              export default {
+                    testEnvironment: 'jsdom',
+                    transform: {
+                        "^.+\\.(js|jsx)$": "babel-jest",
+                        "^.+\\.css$": ["jest-transform-css", { modules: true }]
+                    },
+                };
+
+            if you are using CSS/SCSS in your project 
+            then install yarn add jest-transform-css 
+            or npm i jest-transform-css in you project dev dependencies
+
+            npm doc link: https://www.npmjs.com/package/jest-transform-css
+
+            6. if added something in the component, then update the snapshot via
+               yarn jest --updateSnapshot
+               
+            JEST example docs - https://jestjs.io/docs/snapshot-testing
  */
