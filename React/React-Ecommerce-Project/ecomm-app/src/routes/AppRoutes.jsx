@@ -17,7 +17,7 @@ const AppRoutes = () => {
     isLoading, 
     error, 
     data: categories 
-  } = useFetchData("https://fakestoreapi.com/products/categories", []);
+  } = useFetchData("https://fakestoreapi.com/products/categories", [],()=>{});
      
     return (
         <>

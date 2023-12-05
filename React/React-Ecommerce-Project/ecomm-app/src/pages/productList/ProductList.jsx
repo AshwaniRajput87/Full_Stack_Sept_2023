@@ -9,14 +9,6 @@ import './productList.css'
 const ProductList = () => {
 
     const { categoryName } = useParams();
-    const { 
-        isLoading, 
-        error, 
-        data: products
-    } = useFetchData(
-        `https://fakestoreapi.com/products/category/${ categoryName ? categoryName: '' }`,
-        []
-    );
 
     // Adding Pagination logic
     const itemsPerPage = 3; // Number of items to display per page
@@ -24,9 +16,19 @@ const ProductList = () => {
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+    const { 
+        isLoading, 
+        error, 
+        data: products
+    } = useFetchData(
+        `https://fakestoreapi.com/products/category/${ categoryName ? categoryName: '' }`,
+        [],paginate
+    );
+
+    const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
 
     const totalPages = Math.ceil(products.length / itemsPerPage);
     
