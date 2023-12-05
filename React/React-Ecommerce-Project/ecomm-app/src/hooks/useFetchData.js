@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function useFetchData(url, initialData) {
+function useFetchData(url, initialData, paginate) {
   const [data, setData] = useState(initialData);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -14,6 +14,7 @@ function useFetchData(url, initialData) {
         const response = await axios.get(url);
         setData(response.data);
         setError(null);
+        paginate(1);
       } catch (e) {
         setError(e);
         setData(null);
